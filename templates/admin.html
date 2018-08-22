@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Industrify | admin
+        </title>
+        <style type="text/css">
+            .label{text-align: right}
+            .error{color:red;}
+        </style>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	    <ul>
+		    {% for message in messages %}
+		    <li style="color: red"><strong>{{message}}</strong></li>
+		    {% endfor %}
+	    </ul>
+	{% endif %}
+	{% endwith %}
+        <h2>Add Products</h2>
+        <form action = "{{url_for('admin')}}" method = "POST">
+            <table>
+            <tr>
+                <td class = "label">
+                    Product name
+                </td>
+                <td>
+                    <input type = "text" name = "name" required>
+                </td>
+            </tr>
+            <tr>
+                <td class = "label">
+                    Category
+                </td>
+                <td>
+                    <select name = "category">
+                        <option value = "Household">Household</option>
+                        <option value="Electronics">Electronics</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type = "submit" value = "add product">
+        </form>
+
+        <h2>Products</h2>
+        {% for i in products %}
+        product name: {{i.name}}<br>
+        total hits: {{i.thits}}<br>
+        user hits: {{i.uhits}}<br><br>
+        {% endfor %}
+
+        <h2> Users</h2>
+        {% for i in user %}
+        <div>
+            <b>Username: </b>{{i.username}}<br>
+            <b>Password: </b>{{i.password}}<br>
+        </div><br>
+        {% endfor %}
+    </body>
+</html>

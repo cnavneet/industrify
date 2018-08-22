@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Industrify | Profile
+        </title>
+        <style type="text/css">
+            .label{text-align: right}
+            .error{color:red;}
+        </style>
+    </head>
+    <body>
+        <h2> Welcome {{user.username}}</h2>
+        <a href = "{{url_for('logout')}}">log out</a>
+        <h3>Products</h3>
+        <form action = "{{url_for('profile')}}" method = "POST">
+            <table>
+                <tr>
+                    <td>
+                        Filter:
+                    </td>
+                    <td>
+                        <select name = "category">
+                            <option value = "">All</option>
+                            <option value = "Household">Household</option>
+                            <option value = "Electronics">Electronics</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type = "submit" value = "Apply">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <table>
+            <tr>
+                <th>
+                    Products name
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Total hits
+                </th>
+                <th>
+                    User hits
+                </th>
+            </tr>
+            {% for i in products %}
+            <tr>
+                <td>
+                    <a href = "{{url_for('modify', pid = i.id, uid = user.id)}}">{{i.name}}</a>
+                </td>
+                <td>
+                    {{i.category}}
+                </td>
+                <td>
+                    {{i.thits}}
+                </td>
+                <td>
+                    {{i.uhits}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
