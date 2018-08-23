@@ -7,7 +7,7 @@ import re
 import random
 import hashlib
 import hmac
-
+from string import ascii_letters
 
 app = Flask(__name__)
 
@@ -54,7 +54,7 @@ def initialize(*a,**kw):
 		return user
 
 def make_salt(length=5):
-	return ''.join(random.choice(letters) for x in range(length))
+	return ''.join(random.choice(ascii_letters) for x in range(length))
 
 def make_pw_hash(name,pw,salt=None):
 	if not salt:
