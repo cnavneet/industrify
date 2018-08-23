@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+            <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>    
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
         <title>
             Industrify technologies
         </title>
@@ -10,40 +16,126 @@
         </style>
     </head>
     <body>
-        <h2>Sign In</h2>
-        <h4 class = "error">{{msg}}</h4>
-        <form action = "{{url_for('signin')}}" method = "POST">
-            <table>
-                <tr>
-                    <td class = "label">
-                        Username
-                    </td>
-                    <td>
-                        <input type = "text" name = "username" required>
-                    </td>
-                </tr>
+        <nav class = "navbar navbar-dark navbar-expand-sm fixed-top">
+            <div class = "container">
+                <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#NavBar">
+                    <span class = "navbar-toggler-icon"></span>
+                </button>
+                <div class = "collapse navbar-collapse" id="NavBar">
+                    <ul class = "navbar-nav mr-auto">
+                        <li class = "nav-item">
+                            <a class = "nav-link active" href = "#"><span class = "fa fa-home fa-lg"></span> Home</a>
+                        </li>
+                    </ul>
+                    <span class = "navbar-text">
+                        <a id = "loginButton" href = "{{url_for('signup')}}">
+                            <span class = "fa fa-sign-up"></span> Sign Up
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </nav>
 
-                <tr>
-                    <td class = "label">
-                        Password
-                    </td>
-                    <td>
-                        <input type = "password" name = "password" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+        <div id = "loginModal" class = "modal fade" role = "dialog">
+                <div class = "modal-dialog modal-lg" role = "content">
+                    <div class = "modal-content">
+                        <div class = "modal-header">
+                            <h4 class = "modal-title">Login</h4>
+                            <button type = "button" class = "close" data-dismiss = "modal">&times;</button>
+                        </div>
+                        <div class = "modal-body">
+                                <form action = "{{url_for('signup')}}" method = "POST">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-4">
+                                                    <label class="sr-only" for="exampleInputEmail3">username</label>
+                                                    <input type="text" name = "username" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter username" required>
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="sr-only" for="exampleInputPassword3">Password</label>
+                                                <input type="password" name = "password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password" required>
+                                            </div>
+                                            <div class="col-sm-auto">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                    <label class="form-check-label"> Remember me
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-primary btn-sm ml-1">Sign up</button>        
+                                        </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    </td>
-                    <td>
-                        <input type = "submit" value = "SignIn">
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <p>
-            Don't have an account? 
-            <a href = "{{url_for('signup')}}">Sign up</a> .
-        </p>
+        <div class = "container">
+            <div class = "row row-content">
+                <div class = "col-12 col-sm-6 offset-sm-3">
+                    <div class = "card">
+                        <div class = "card-header text-center">
+                            <strong>Sign In</strong>
+                        </div>
+                        <div class = "card-body">
+                            <form action="{{url_for('signin')}}" method = "POST">
+                                <div class = "form-group row error">
+                                    <div class = "col-12 col-sm-4 offset-sm-4">
+                                        <strong>{{msg}}</strong>
+                                    </div>
+                                </div>
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-12">
+                                        <input type = "text" class = "form-control" name = "username" placeholder = "Enter Username" required>
+                                    </div>
+                                </div>
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-12">
+                                        <input type = "password" class = "form-control" name = "password" placeholder = "Enter Password" required>
+                                    </div>
+                                </div>
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-12">
+                                        <input type = "submit" class = "form-control bg-primary text-white" value = "Sign In">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class = "alert alert-warning alert-dismissible col-12 col-sm-6 offset-sm-3" role = "alert">
+                    <button type = "button" class = "close" data-dismiss = "alert"><span>&times;</span></button>
+                    <strong>Warning</strong>: Don't have an account? <a href = "{{url_for('signup')}}" class = "alert-link">Sign Up / register</a>.
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $("#mycarousel").carousel( { interval: 2000 } );
+                $("#carouselButton").click(function(){
+                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                    $("#mycarousel").carousel('pause');
+                    $("#carouselButton").children("span").removeClass('fa-pause');
+                    $("#carouselButton").children("span").addClass('fa-play');
+                }
+                else if ($("#carouselButton").children("span").hasClass('fa-play')){
+                    $("#mycarousel").carousel('cycle');
+                    $("#carouselButton").children("span").removeClass('fa-play');
+                    $("#carouselButton").children("span").addClass('fa-pause');                    
+                }
+                });
+                $("#loginButton").click(function(){
+                    $("#loginModal").modal({
+                        show: true
+                    });
+                });
+                });
+        </script>
     </body>
 </html>

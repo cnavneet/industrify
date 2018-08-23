@@ -86,10 +86,10 @@ def signin():
         username = request.form['username']
         password = request.form['password']
 
-        u = session.query(User).filter_by(username = username).one()
-        if u and valid_pw(username, password, u.password):
+        u = session.query(User).filter_by(username = username).all()
+        if u and valid_pw(username, password, u[0].password):
             resp = make_response(redirect('profile'))
-            resp.set_cookie('user_id', str(u.id))
+            resp.set_cookie('user_id', str(u[0].id))
             return resp
         msg = "Invalid Login!!"
         return render_template('welcome.html', msg = msg)

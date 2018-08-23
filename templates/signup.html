@@ -1,6 +1,12 @@
 <!DOCTYPE.html>
 <html>
 <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
     <title>
         Industrify | Sign up
     </title>
@@ -10,44 +16,99 @@
     </style>
 </head>
 <body>
-    <h2> Sign Up</h2>
-    <form action = "{{url_for('signup')}}" method = "POST">
-        <table>
-            <tr>
-                <td class = "label">
-                    Username
-                </td>
-                <td>
-                    <input type="text" name="username" value = "{{username}}" required>
-                </td>
-                <td class = "error">
-                    {{error_username}}<br>{{error_user}}
-                </td>
-            </tr>
-            <tr>
-                <td class = "label">
-                    Password
-                </td>
-                <td>
-                    <input type = "password" name= "password" required>
-                </td>
-                <td class = "error">
-                    {{error_password}}
-                </td>
-            </tr>
-            <tr>
-                <td class = "label">
-                    Verify Password
-                </td>
-                <td>
-                    <input type = "password" name = "verify">
-                </td>
-                <td class = "error">
-                    {{error_verify}}
-                </td>
-            </tr>
-        </table>
-        <input type = "submit" value = "Sign up">
-    </form>
+        <nav class = "navbar navbar-dark navbar-expand-sm fixed-top">
+                <div class = "container">
+                    <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#NavBar">
+                        <span class = "navbar-toggler-icon"></span>
+                    </button>
+                    <div class = "collapse navbar-collapse" id="NavBar">
+                        <ul class = "navbar-nav mr-auto">
+                            <li class = "nav-item">
+                                <a class = "nav-link active" href = "#"><span class = "fa fa-home fa-lg"></span> Home</a>
+                            </li>
+                        </ul>
+                        <span class = "navbar-text">
+                            <a id = "loginButton" href = "{{url_for('signin')}}">
+                                <span class = "fa fa-sign-in"></span> Sign In
+                            </a>
+                        </span>
+                    </div>
+                </div>
+        </nav>
+        <div class = "container">
+            <div class = "row row-content">
+                <div class = "col-12 col-sm-6 offset-sm-3">
+                    <div class = "card">
+                        <div class = "card-header text-center">
+                            <strong>Sign UP / Register</strong>
+                        </div>
+                        <div class = "card-body">
+                            <form action="{{url_for('signup')}}" method = "POST">
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-12">
+                                        <input type = "text" class = "form-control" name = "username" value = "{{username}}" placeholder = "Enter Username" required>
+                                    </div>
+                                    <div class = "col-12 col-sm-12 error">
+                                        <small>{{error_username}}</small><br>
+                                        <small>{{error_user}}</small>
+                                    </div>
+                                </div>
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-6">
+                                        <input type = "password" class = "form-control" name = "password" placeholder="Enter Password" required>
+                                    </div>
+                                    <div class = "col-12 col-sm-6">
+                                        <input type = "password" class = "form-control" name = "verify" placeholder="Re-enter Password" required>
+                                    </div>
+                                </div>
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-6 error">
+                                        <small>{{error_password}}</small>
+                                    </div>
+                                    <div class = "col-12 col-sm-6 error">
+                                        <small>{{error_verify}}</small>
+                                    </div>
+                                </div>
+                                <div class = "form-group row">
+                                    <div class = "col-12 col-sm-12">
+                                        <input type = "submit" class = "form-control bg-primary text-white" value = "Sign Up / Register">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class = "alert alert-warning alert-dismissible col-12 col-sm-6 offset-sm-3" role = "alert">
+                        <button type = "button" class = "close" data-dismiss = "alert"><span>&times;</span></button>
+                        <strong>Warning</strong>: Already have an account? <a href = "{{url_for('signin')}}" class = "alert-link">Sign In</a>.
+                </div>
+            </div>
+        </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $("#mycarousel").carousel( { interval: 2000 } );
+                $("#carouselButton").click(function(){
+                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                    $("#mycarousel").carousel('pause');
+                    $("#carouselButton").children("span").removeClass('fa-pause');
+                    $("#carouselButton").children("span").addClass('fa-play');
+                }
+                else if ($("#carouselButton").children("span").hasClass('fa-play')){
+                    $("#mycarousel").carousel('cycle');
+                    $("#carouselButton").children("span").removeClass('fa-play');
+                    $("#carouselButton").children("span").addClass('fa-pause');                    
+                }
+                });
+                $("#loginButton").click(function(){
+                    $("#loginModal").modal({
+                        show: true
+                    });
+                });
+                });
+        </script>
 </body>
 </html>
