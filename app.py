@@ -10,6 +10,7 @@ import hmac
 from string import ascii_letters
 
 app = Flask(__name__)
+app.secret_key = 'super_secret_key'
 
 engine = create_engine('sqlite:///database.db')
 Base.metadata.bind = engine
@@ -198,6 +199,5 @@ def modify(pid, uid):
     return redirect(url_for('profile'))
 
 if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
