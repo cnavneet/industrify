@@ -7,7 +7,7 @@ import re
 import random
 import hashlib
 import hmac
-from string import letters
+
 
 app = Flask(__name__)
 
