@@ -45,7 +45,7 @@ pytz==2018.4
 queuelib==1.5.0
 redis==2.10.6
 requests==2.18.4
-rsa==3.4.2
+rsa==4.7
 Scrapy==1.5.0
 scrapyrt==0.10
 service-identity==17.0.0
