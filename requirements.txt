@@ -46,7 +46,7 @@ queuelib==1.5.0
 redis==2.10.6
 requests==2.18.4
 rsa==3.4.2
-Scrapy==1.5.0
+Scrapy==1.8.2
 scrapyrt==0.10
 service-identity==17.0.0
 six==1.11.0
